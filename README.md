@@ -115,8 +115,8 @@ Once both servers are running, you can access the application:
 ### Endpoints
 
 - **Frontend Pages**:
-  - `/countries`: Displays the list of countries.
-  - `/countries/[code]`: Displays detailed information for the selected country.
+  - `/`: Displays the list of countries.
+  - `/[countryCode]`: Displays detailed information for the selected country.
 
 - **Backend Endpoints**:
   - `GET /api/countries`: Fetches the list of available countries.
