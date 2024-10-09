@@ -1,9 +1,8 @@
 import { getCountryByCode } from "@/utils/api"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
 import Link from "next/link"
 import PopulationChart from "../components/population-chart"
+import { CountryDetails } from "../components/country-details"
 
 export default async function Page({
    params
@@ -12,8 +11,8 @@ export default async function Page({
 }) {
    const country = await getCountryByCode(params.countryId)
 
-    if(!country) return null
-    
+   if (!country) return null
+
    return (
       <div className="container mx-auto px-4 py-8">
          <Link href="/" className="mb-8 flex items-center gap-4">
@@ -34,66 +33,7 @@ export default async function Page({
             <span className="text-xl font-bold">Back to list</span>
          </Link>
 
-         <Card className="mb-8">
-            <CardHeader className="flex flex-row items-center justify-between">
-               <div>
-                  <CardTitle className="text-3xl font-bold">
-                     {country.countryInfo.commonName}
-                  </CardTitle>
-                  <p className="text-muted-foreground">
-                     {country.countryInfo.officialName}
-                  </p>
-               </div>
-               <Image
-                  src={country.flagUrl}
-                  alt={`Flag of ${country.countryInfo.commonName}`}
-                  width={100}
-                  height={60}
-                  className="rounded-md shadow-sm"
-               />
-            </CardHeader>
-            <CardContent>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                     <h3 className="text-xl font-semibold mb-2">
-                        Country Information
-                     </h3>
-                     <p>
-                        <strong>Region:</strong> {country.countryInfo.region}
-                     </p>
-                     <p>
-                        <strong>Country Code:</strong>{" "}
-                        {country.countryInfo.countryCode}
-                     </p>
-                  </div>
-                  <div>
-                     <h3 className="text-xl font-semibold mb-2">
-                        Bordering Countries
-                     </h3>
-                     <div className="flex flex-wrap gap-2">
-                        {country.countryInfo.borders.map(
-                           (border: {
-                              countryCode: string
-                              commonName: string
-                           }) => (
-                              <Link
-                                 href={`/${border.countryCode}`}
-                                 key={border.countryCode}
-                              >
-                                 <Badge
-                                    variant="secondary"
-                                    className="cursor-pointer hover:bg-secondary-foreground hover:text-secondary transition-colors px-4 py-3 text-md"
-                                 >
-                                    {border.commonName}
-                                 </Badge>
-                              </Link>
-                           )
-                        )}
-                     </div>
-                  </div>
-               </div>
-            </CardContent>
-         </Card>
+         <CountryDetails country={country} />
 
          <Card>
             <CardHeader>
