@@ -16,7 +16,7 @@ export default async function Page({
     
    return (
       <div className="container mx-auto px-4 py-8">
-         <Link href="/" className="mb-8 flex items-center gap-4" >
+         <Link href="/" className="mb-8 flex items-center gap-4">
             <svg
                xmlns="http://www.w3.org/2000/svg"
                width="24"
@@ -55,7 +55,7 @@ export default async function Page({
             <CardContent>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                     <h3 className="text-lg font-semibold mb-2">
+                     <h3 className="text-xl font-semibold mb-2">
                         Country Information
                      </h3>
                      <p>
@@ -67,7 +67,7 @@ export default async function Page({
                      </p>
                   </div>
                   <div>
-                     <h3 className="text-lg font-semibold mb-2">
+                     <h3 className="text-xl font-semibold mb-2">
                         Bordering Countries
                      </h3>
                      <div className="flex flex-wrap gap-2">
@@ -82,7 +82,7 @@ export default async function Page({
                               >
                                  <Badge
                                     variant="secondary"
-                                    className="cursor-pointer hover:bg-secondary-foreground hover:text-secondary transition-colors"
+                                    className="cursor-pointer hover:bg-secondary-foreground hover:text-secondary transition-colors px-4 py-3 text-md"
                                  >
                                     {border.commonName}
                                  </Badge>
